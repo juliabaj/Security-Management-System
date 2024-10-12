@@ -70,6 +70,7 @@ def domains_generator():
     name = ''.join(random.choices(string.ascii_lowercase, k=length))
     ends = ['.com', '.net', '.org', '.info']
 
+
     path = random.choice([
         "/login",
         "/verify",
@@ -81,10 +82,19 @@ def domains_generator():
         "/bank",
         "/money",
         "/register"
+        "/homepage",
+        "/aboutus",
+        "/contact",
+        "/services",
+        "/products",
+        "/blog",
+        "/info",
+        "/support"
     ])
 
     domain_name = f"http://{name}{random.choice(ends)}{path}"
     return domain_name
+
 def phising_attack_simulator(phising_file, number_of_logs):
 
     requests = [
