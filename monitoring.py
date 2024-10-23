@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import re
 import random
 import string
@@ -148,3 +149,115 @@ if __name__ == "__main__":
     #analize_logs_detect_incidents("log_file.txt")
     generate_logs("collect_logs.txt", 10)
     ddos_attack_simulator("ddos_file.txt", 3, 20, 5)
+=======
+import random
+from datetime import datetime, timedelta
+import tkinter as tk
+from tkinter import ttk
+
+
+title_type_dict = {"SOC287 - Arbitrary File Read on Checkpoint Security Gateway CVE-2024-24919": "Web attack", "SOC282 - Phishing Alert - Deceptive Mail Detected":"Exchange", "SOC176 - RDP Brute Force Detected": "Brute Force", "SOC239 - Remote Code Execution Detected in Splunk Enterprise":"Unauthorized access", "SOC202 - FakeGPT Malicious Chrome Extension": "Data Leakage", "SOC173 - Follina 0-Day Detected":"Malware"}
+severity = ['Low', 'Medium', 'High']
+def generate_random_date():
+    today = datetime.today()
+    random_days = random.randint(0, 30)
+    random_date = today - timedelta(days=random_days)
+    return random_date.strftime("%Y-%m-%d %H:%M:%S")
+
+def generate_random_ip():
+    return f"{random.randint(1, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}"
+def generating_and_monitoring_incidents():
+    incidents = []
+    incident_number = 10
+    for i in range(incident_number):
+        random_title = random.choice(list(title_type_dict.keys()))
+        incident = {
+            'id': i+1,
+            'date': generate_random_date(),
+            'title': random_title,
+            'type': title_type_dict[random_title],
+            'severity': random.choice(severity),
+            'ip': generate_random_ip()
+        }
+        incidents.append(incident)
+
+    return incidents
+
+#def view_incidents():
+
+
+
+#def steps():
+
+
+
+<<<<<<<< HEAD:management.py
+#def update_status_and_generate_raport():
+
+
+#Interfejs
+def show_incident(event):
+    selected_item = tree.selection()[0]  # Pobranie zaznaczonego wiersza
+    incident = tree.item(selected_item)['values']  # Pobranie danych incydentu
+
+    id_label.config(text=f"ID: {incident[0]}")
+    title_label.config(text=f"Title: {incident[1]}")
+    type_label.config(text=f"Type: {incident[2]}")
+    severity_label.config(text=f"Severity: {incident[3]}")
+    date_label.config(text=f"Date: {incident[4]}")
+    ip_label.config(text=f"Source Address: {incident[5]}")
+
+list_of_incidents = generating_and_monitoring_incidents()
+#print(list_of_incidents)
+
+root = tk.Tk()
+root.title("Incident Management System")
+
+tree = ttk.Treeview(root, columns=("ID", "Title", "Type", "Severity", "Date", "IP"), show="headings")
+
+# Ustawienia nagłówków
+tree.heading("ID", text="ID")
+tree.heading("Title", text="Title")
+tree.heading("Type", text="Type")
+tree.heading("Severity", text="Severity")
+tree.heading("Date", text="Date")
+tree.heading("IP", text="Source ip")
+
+
+# Dodanie incydentów do tabeli
+for incident in list_of_incidents:
+    tree.insert('', tk.END, values=(incident['id'], incident['title'], incident['type'], incident['severity'], incident['date'], incident['ip']))
+
+tree.pack(pady=20)
+
+# Po wybraniu danego incydentu, wyswietlaja sie szczegoly
+tree.bind('<<TreeviewSelect>>', show_incident)
+
+#Definicja etykiet szczegółow
+id_label = tk.Label(root, text="ID: ", font=("Arial", 12), fg="red", underline=True)  # Podkreślenie tekstu
+id_label.pack()
+
+title_label = tk.Label(root, text="Title: ", font=("Arial", 12))
+title_label.pack()
+
+type_label = tk.Label(root, text="Type: ", font=("Arial", 12))
+type_label.pack()
+
+severity_label = tk.Label(root, text="Severity: ", font=("Arial", 12))
+severity_label.pack()
+
+date_label = tk.Label(root, text="Date: ", font=("Arial", 12))
+date_label.pack()
+
+ip_label = tk.Label(root, text="Source Address: ", font=("Arial", 12))
+ip_label.pack()
+
+# Uruchomienie głównej pętli tkinter
+root.mainloop()
+========
+    phising_attack_simulator("phising_file.txt", 10)
+    analize_logs_detect_incidents("log_file.txt")
+    #generate_logs("collect_logs.txt", 10)
+    #ddos_attack_simulator("ddos_file.txt", 3, 20, 5)
+>>>>>>>> 211a5c18fcbca78ab873dff985d1c59e7b9b0f5f:monitoring.py
+>>>>>>> 211a5c18fcbca78ab873dff985d1c59e7b9b0f5f
