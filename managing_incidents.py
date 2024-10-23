@@ -5,12 +5,16 @@ from tkinter import ttk
 
 
 title_type_dict = {"SOC287 - Arbitrary File Read on Checkpoint Security Gateway CVE-2024-24919": "Web attack", "SOC282 - Phishing Alert - Deceptive Mail Detected":"Exchange", "SOC176 - RDP Brute Force Detected": "Brute Force", "SOC239 - Remote Code Execution Detected in Splunk Enterprise":"Unauthorized access", "SOC202 - FakeGPT Malicious Chrome Extension": "Data Leakage", "SOC173 - Follina 0-Day Detected":"Malware"}
+
 severity = ['High', 'Medium', 'Critical']
+
+severity = ['Medium', 'High', 'Critical']
+
 def generate_random_date():
     today = datetime.today()
     random_days = random.randint(0, 30)
     random_date = today - timedelta(days=random_days)
-    return random_date.strftime("%Y-%m-%d %H:%M:%S")
+    return random_date.strftime("%Y-%m-%d") #dodac godzine randomowa
 
 def generate_random_ip():
     return f"{random.randint(1, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}"
@@ -35,7 +39,14 @@ def generating_and_monitoring_incidents():
 
 
 
-#def steps():
+def playbook():
+    playbook = {
+        "Web attack": ["Step 1. Sprawdź kto jest właścicielem adresu IP\n Czy ruch pochodzi z zewnątrz\n Zweryfikuj bezpieczeństwo tego adresu (VirusTotal)",
+                       "Step 2. Przeanalizuj ruch HTTP (SQL Injections, XSS etc.",
+                       "Step 3. jak napisac po polsku is the traffic malicious xddd? "
+
+                        ]
+    }
 
 
 
