@@ -14,7 +14,9 @@ def generate_random_date():
     today = datetime.today()
     random_days = random.randint(0, 30)
     random_date = today - timedelta(days=random_days)
-    return random_date.strftime("%Y-%m-%d") #dodac godzine randomowa
+    random_time = f"{random.randint(0, 23):02}:{random.randint(0, 59):02}"
+    return random_date.strftime(f"%Y-%m-%d {random_time}")
+
 
 def generate_random_ip():
     return f"{random.randint(1, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}"
