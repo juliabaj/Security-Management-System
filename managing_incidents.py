@@ -5,7 +5,7 @@ from tkinter import ttk
 
 
 title_type_dict = {"SOC287 - Arbitrary File Read on Checkpoint Security Gateway CVE-2024-24919": "Web attack", "SOC282 - Phishing Alert - Deceptive Mail Detected":"Exchange", "SOC176 - RDP Brute Force Detected": "Brute Force", "SOC239 - Remote Code Execution Detected in Splunk Enterprise":"Unauthorized access", "SOC202 - FakeGPT Malicious Chrome Extension": "Data Leakage", "SOC173 - Follina 0-Day Detected":"Malware"}
-severity = ['Low', 'Medium', 'High']
+severity = ['High', 'Medium', 'Critical']
 def generate_random_date():
     today = datetime.today()
     random_days = random.randint(0, 30)
