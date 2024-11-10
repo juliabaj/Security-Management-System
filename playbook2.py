@@ -77,6 +77,9 @@ def brute_force():
             with open('komentarz_brute_force.txt', 'w') as kom:
                 tekst = input('Dodaj komentarz:\n')
                 kom.write(tekst)
+        elif komentarz == 'Nie':
+            print("Playbook zakończony.")
+
 
     if answer_b1 == 'Nie':
         print("Nie wykryto potencjalnego ataku brute-force. Działanie zapobiegawcze:")
@@ -224,6 +227,8 @@ def malware():
             with open('komentarz_malware.txt', 'w') as kom:
                 tekst = input('Dodaj komentarz:\n')
                 kom.write(tekst)
+        elif komentarz == 'Nie':
+            print("Playbook zakończony.")
     else:
         print('Brak potwierdzenia obecności malware.')
 
@@ -297,7 +302,8 @@ def web_attack():
         with open('komentarz_web_attack.txt', 'w') as kom:
             tekst = input('Dodaj komentarz:\n')
             kom.write(tekst)
-
+    elif komentarz == 'Nie':
+        print("Playbook zakończony.")
 
 def data_leakage():
     print('Zidentyfikowano incydent Data Leakage.')
@@ -356,30 +362,34 @@ def data_leakage():
         with open('komentarz_data_leakage.txt', 'w') as kom:
             tekst = input('Dodaj komentarz:\n')
             kom.write(tekst)
+    elif komentarz == 'Nie':
+        print("Playbook zakończony.")
 
 def run_playbook():
     questionary.print("Witaj w systemie zarządzania incydentami bezpieczeństwa!", style="bold italic fg:darkred")
-    print(print_table())
-    menu = input('Wybierz indeks incydentu, aby poznać dalsze kroki: ')
     incidents = generating_and_monitoring_incidents()
-    incident_index = int(menu)
-    incident = incidents[incident_index]
-    while True:
+    decision = 'y'
+
+    while decision == 'y':
+        print(print_table(incidents))
+        menu = input('Wybierz indeks incydentu, aby poznać dalsze kroki: ')
+        incident_index = int(menu) - 1
+        incident = incidents[incident_index]
+
         if incident['type'] == 'Malware':
             malware()
         elif incident['type'] == 'Brute Force':
             brute_force()
-            break
         elif incident['type'] == 'Web attack':
             web_attack()
-            break
         elif incident['type'] == 'Data Leakage':
             data_leakage()
-            break
-        elif menu == 'q':
-            break
-        else:
-            print('Brak takiej opcji')
+        elif incident['type'] == 'Unauthorized access' or incident['type'] == 'Exchange':
+            print("Nie ma takiej opcji")
+
+        decision = str(input("Czy chcesz kontynuować? (Y/N)")).lower()
+
+
 
 
 if __name__ == '__main__':
