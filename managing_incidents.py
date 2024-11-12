@@ -44,8 +44,7 @@ def generating_and_monitoring_incidents():
     return incidents
 
 
-def print_table():
-    incidents = generating_and_monitoring_incidents()
+def print_table(incidents):
     headers = ['ID', 'Date', 'Title', 'Type', 'Severity', 'Source IP']
     table = PrettyTable(headers)
 
